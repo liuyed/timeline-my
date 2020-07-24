@@ -1,0 +1,182 @@
+@timeline-divider-center: 50%;
+@timeline-divider-width: 96px;
+
+@timeline-item-padding: 24px;
+
+@timeline-line-width: 2px;
+
+@timeline-wedge-size: 10px;
+
+@timeline-dot-small-size: 24px;
+@timeline-dot-regular-size: 38px;
+@timeline-dot-large-size: 52px;
+
+@timeline-inner-dot-small-size: 18px;
+@timeline-inner-dot-regular-size: 30px;
+@timeline-inner-dot-large-size: 42px;
+
+  // Elements
+.my-timeline{
+  padding-top: @timeline-item-padding;
+  position: relative;
+  &::before{
+    background: rgba(0,0,0,.12);
+  }
+  &:before{
+    bottom: 0;
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: @timeline-line-width;
+  }
+  .primary {
+      background-color: #1867c0 !important;
+      border-color: #1867c0 !important;
+  }
+  .my-timeline-item {
+    &__dot{
+        background: #fff;
+    }
+    .my-card {
+      &::before{
+        border-right-color: rgba(0,0,0,.12);
+      }
+    }
+  }
+}
+.my-timeline-item{
+  display: flex;
+  padding-bottom: @timeline-item-padding;
+}
+
+.my-timeline-item__body{
+  position: relative;
+  height: 100%;
+  flex: 1 1 auto;
+}
+.my-timeline-item__divider{
+  position: relative;
+  min-width: @timeline-divider-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my-timeline-item__dot {
+  z-index: 2;
+  border-radius: 50%;
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  height: 38px;
+  left: calc(~"50% - 19px");
+  width: 38px;
+  &--small{
+    height: 24px;
+    left: calc(~"50% - 12px");
+    width: 24px;
+  .my-timeline-item__inner-dot {
+      height: 18px;
+      margin: 3px;
+      width: 18px;
+    }
+  }
+}
+.my-timeline-item__inner-dot{
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin: 4px;
+  width: 30px;
+}
+
+.my-timeline-item__opposite{
+  flex: 1 1 auto;
+  align-self: center;
+  max-width: calc(~"@{timeline-divider-center} - 48px");
+}
+// Before/after directions
+.my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) {
+  .my-timeline-item{
+    &:nth-child(odd):not(.my-timeline-item--before), &--after{
+      flex-direction: row-reverse;
+      .my-timeline-item__opposite{
+        text-align: right;
+      }
+      // +timeline-wedge-align(left)
+      .my-timeline-item__body {
+        > .v-card:before, .v-card:after{
+          transform: rotate(0);
+          left: -10px;
+          right: auto;
+          border-right-color: rgba(0,0,0,.12);
+        }
+      }
+      .my-timeline-item__body{
+        max-width: calc(~"50% - 48px");
+      }
+    }
+    &:nth-child(even):not(.v-timeline-item--after), &--before{
+      flex-direction: row;
+      .my-timeline-item__opposite{
+        text-align: left;
+      }
+      .my-timeline-item__body {
+        max-width: calc(~"50% - 48px");
+      }
+    }
+     
+  }
+}
+// Wedge
+.my-timeline-item__body{
+  > .my-card:not(.my-card--flat){
+    &:before, &:after{
+      content: '';
+      position: absolute;
+      border-top: @timeline-wedge-size solid transparent;
+      border-bottom: @timeline-wedge-size solid transparent;
+      border-right: @timeline-wedge-size solid black;
+      top: calc(~"50% - @{timeline-wedge-size}");
+    }
+    &:after{
+      border-right-color: inherit
+    }
+    &:before {
+      top: calc(~"50% - @{timeline-wedge-size} + 2px")
+    }
+   
+  }
+}
+// Modifiers
+
+.my-timeline--align-top{
+  .my-timeline-item__dot{
+    align-self: start;
+    .my-timeline-item__body{
+      > .my-card{
+        &:before{
+          top: calc(~"0% + @{timeline-wedge-size} + 2px")
+        }
+        &:after{
+          top: calc("0% + @{timeline-wedge-size}")
+        }
+      }
+    }
+  }
+}
+.my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item--after .my-timeline-item__body .my-card:after, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item--after .my-timeline-item__body>.my-card:before, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item:nth-child(odd):not(.my-timeline-item--before) .my-timeline-item__body .my-card:after, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item:nth-child(odd):not(.my-timeline-item--before) .my-timeline-item__body>.my-card:before {
+  transform: rotate(0);
+  left: -10px;
+  right: auto;
+}
+.my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item--before .my-timeline-item__body .v-card:after, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item--before .my-timeline-item__body>.my-card:before, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item:nth-child(2n):not(.my-timeline-item--after) .my-timeline-item__body .my-card:after, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item:nth-child(2n):not(.my-timeline-item--after) .my-timeline-item__body>.my-card:before {
+  transform: rotate(180deg);
+  right: -10px;
+  left: auto;
+}
+
+.my-timeline-item__body>.my-card:not(.my-card--flat):after {
+  border-right-color: inherit;
+}
