@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <myTimeline>
-      <myTimelineItem  v-for="n in 3" :key="n" small>
-        <span slot="opposite">test{{n}}</span>
-        哈哈哈哈哈哈哈{{n}}
+      <myTimelineItem  v-for="n in 3" :key="n" small >
+        <span slot="opposite">200-222-222</span>
+           <div class="my-card elevation-2">
+             <p class="my-card__title headline ">保真家</p>
+             <p class="my-card__text">处理人：刘大大</p>
+           </div>
       </myTimelineItem>
       <!-- <div class="my-timeline-item theme--light">
         <div class="my-timeline-item__body"><div class="elevation-2 my-card my-sheet theme--light"><div class="my-card__title headline">Lorem ipsum</div><div class="my-card__text">
@@ -44,10 +47,11 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
 </style>

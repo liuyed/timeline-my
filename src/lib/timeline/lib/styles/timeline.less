@@ -30,9 +30,25 @@
     top: 0;
     width: @timeline-line-width;
   }
-  .primary {
-      background-color: #1867c0 !important;
-      border-color: #1867c0 !important;
+  &:not(.my-timeline--dense):not(.my-timeline--reverse):before {
+      left: calc(~"50% - 1px");
+      right: auto;
+  }
+  .my__primary {
+      background-color: rgb(11, 189, 135) !important;
+      border-color: rgb(11, 189, 135) !important;
+  }
+  .my__danger {
+    background-color: #F56C6C !important;
+    border-color: #F56C6C !important;
+  }
+  .my__warning {
+    background-color: #E6A23C!important;
+    border-color: #E6A23C !important;
+  }
+  .my__info{
+    background-color: #909399!important;
+    border-color: #909399 !important;
   }
   .my-timeline-item {
     &__dot{
@@ -151,21 +167,21 @@
 }
 // Modifiers
 
-.my-timeline--align-top{
-  .my-timeline-item__dot{
-    align-self: start;
-    .my-timeline-item__body{
-      > .my-card{
-        &:before{
-          top: calc(~"0% + @{timeline-wedge-size} + 2px")
-        }
-        &:after{
-          top: calc("0% + @{timeline-wedge-size}")
-        }
-      }
-    }
-  }
-}
+// .my-timeline--align-top{
+//   .my-timeline-item__dot{
+//     align-self: start;
+//     .my-timeline-item__body{
+//       > .my-card{
+//         &:before{
+//           top: calc(~"@{timeline-wedge-size} + 2px")
+//         }
+//         &:after{
+//           top: calc("@{timeline-wedge-size}")
+//         }
+//       }
+//     }
+//   }
+// }
 .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item--after .my-timeline-item__body .my-card:after, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item--after .my-timeline-item__body>.my-card:before, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item:nth-child(odd):not(.my-timeline-item--before) .my-timeline-item__body .my-card:after, .my-timeline:not(.my-timeline--dense):not(.my-timeline--reverse) .my-timeline-item:nth-child(odd):not(.my-timeline-item--before) .my-timeline-item__body>.my-card:before {
   transform: rotate(0);
   left: -10px;
@@ -179,4 +195,72 @@
 
 .my-timeline-item__body>.my-card:not(.my-card--flat):after {
   border-right-color: inherit;
+}
+.my-card {
+  border-width: thin;
+    display: block;
+    max-width: 100%;
+    outline: none;
+    text-decoration: none;
+    transition-property: box-shadow,opacity;
+    overflow-wrap: break-word;
+    position: relative;
+    white-space: normal;
+  background-color: #fff;
+  color: rgba(0,0,0,.87);
+  
+}
+.elevation-2 {
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)!important;
+}
+.headline, .title {
+  line-height: 2rem;
+  font-family: Roboto,sans-serif!important;
+}
+.headline {
+  font-size: 1.5rem!important;
+  font-weight: 400;
+  letter-spacing: normal!important;
+}
+.my-card__title {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: .0125em;
+  line-height: 2rem;
+  word-break: break-all;
+}
+.my-card__subtitle, .my-card__text, .my-card__title {
+  padding: 16px;
+}
+.my-card>:last-child:not(.my-btn):not(.my-chip) {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.my-card .my-card__subtitle, .my-card>.my-card__text {
+  color: rgba(0,0,0,.6);
+}
+.my-card__title+.my-card__subtitle, .my-card__title+.my-card__text {
+  padding-top: 0;
+}
+
+.my-card__text {
+  width: 100%;
+}
+.my-card__subtitle, .my-card__text, .my-card__title {
+  padding: 16px;
+}
+.my-card__subtitle, .my-card__text {
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.375rem;
+  letter-spacing: .0071428571em;
+}
+.my-timeline .my-timeline-item .my-card:before {
+  border-right-color: rgba(0,0,0,.12);
+}
+.my-timeline-item__body>.my-card:not(.my-card--flat):after {
+  border-right-color: #fff;
 }

@@ -1,6 +1,6 @@
 {
   "name": "timeline-my",
-  "version": "0.0.6",
+  "version": "0.1.2",
   "description": "myTimeline",
   "main": "index.js",
   "directories": {

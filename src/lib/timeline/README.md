@@ -32,7 +32,7 @@
 
 | 属性 | 类型 | 默认 | 描述 ｜
 | :------------ |:---------------:| -----:|:---------------:| 
-| color | string | primary |  将指定的颜色应用于控件 - 它可以是 material color 的名称（例如 success 或者 purple）或 css 颜色 (#033 或 rgba(255, 0, 0, 0.5))。 你可以在 colors page 中找到内置类的列表。 | 
+| color | string | my__primary | my__primary、my__info\my__danger\my__warning 将指定的颜色应用于控件 - 它可以是 material color 的名称（例如 success 或者 purple）或 css 颜色 (#033 或 rgba(255, 0, 0, 0.5))。 你可以在 colors page 中找到内置类的列表。 | 
 | fill-dot | boolean | false |  从点容器中删除填充 | 
 | hide-dot | boolean | false | 隐藏时间线内点的显示 |
 | icon | string | undefined | 为点容器指定图标 |
